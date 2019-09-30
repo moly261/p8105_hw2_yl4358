@@ -90,3 +90,22 @@ snp_df =
   ) %>% 
   select(-day)
 ```
+
+## tidy the unemployment data
+
+```{r}
+unemployment_df = 
+  read_csv("./data/fivethirtyeight_datasets/unemployment.csv") %>% 
+  janitor::clean_names() %>%
+  pivot_longer(
+    jan:dec,
+    names_to = "month",
+    values_to = "unemployment"
+  ) %>% 
+  mutate(
+    year = as.character(year),
+    month = recode(month, jan = month.name[1], feb = month.name[2], mar = month.name[3], apr = month.name[4],
+                   may = month.name[5], jun = month.name[6], jul = month.name[7], aug = month.name[8], 
+                   sep = month.name[9], oct = month.name[10], nov = month.name[11], dec = month.name[12])
+  )
+```
