@@ -55,3 +55,22 @@ prep_df =
 
 *Total precipitation in 2018 is `r sum(pull(filter(prep_df, year == 2018), total))` inches. The median number of sports balls in a dumpster in 2017 is `r median(pull(filter(mr_trash_wheel, year == 2017), sports_balls))`.
 
+
+# Problem 2
+
+
+## clean the data in pols-month.csv
+
+```{r}
+pols_month = 
+  read_csv("./data/fivethirtyeight_datasets/pols-month.csv") %>% 
+  janitor::clean_names() %>%
+  separate(col = mon, into = c("year", "month", "day"), sep = "-") %>% 
+  mutate(
+    month = as.numeric(month),
+    month = month.name[month],
+   president = ifelse(prez_gop == 0, "dem", "gop")
+  ) %>% 
+  select(-prez_gop, -prez_dem, -day) 
+
+```
