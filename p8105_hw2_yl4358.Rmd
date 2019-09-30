@@ -137,3 +137,16 @@ popular_baby_names =
   ) %>% 
   distinct()
 ```
+
+## Produce a well-structures, reader-friendly table showing the rank in popularity of the name "Olivia" as a female baby name over time
+
+```{r}
+rank_oliva_female = 
+  filter(popular_baby_names, childs_first_name == "olivia" & gender == "female") %>% 
+  select(-count) %>% 
+  pivot_wider(
+    names_from = "year_of_birth",
+    values_from = "rank"
+) %>% 
+  select(-gender, -childs_first_name)
+```
