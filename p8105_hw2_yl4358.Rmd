@@ -74,3 +74,19 @@ pols_month =
   select(-prez_gop, -prez_dem, -day) 
 
 ```
+
+## clean the data in snp.csv
+
+```{r}
+snp_df = 
+  read_csv("./data/fivethirtyeight_datasets/snp.csv") %>% 
+  janitor::clean_names() %>%
+  separate(col = date, into = c("month", "day", "year"), sep = "/") %>% 
+  arrange(year, month) %>% 
+  select(year, month, everything()) %>% 
+  mutate(
+    month = as.numeric(month),
+    month = month.name[month]
+  ) %>% 
+  select(-day)
+```
