@@ -109,3 +109,10 @@ unemployment_df =
                    sep = month.name[9], oct = month.name[10], nov = month.name[11], dec = month.name[12])
   )
 ```
+
+## join the datasets
+
+```{r}
+join_dataset = left_join(pols_month, snp_df, by = c("year", "month"))
+final_dataset = left_join(join_dataset, unemployment_df, by = c("year", "month"))
+```
