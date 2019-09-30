@@ -48,3 +48,10 @@ prep_df =
 
 ```
 
+
+* the number of observations in `mr_trash_wheel` dataset is `r length(pull(mr_trash_wheel, dumpster))`, and the the number of observations in `prep_df` dataset is `r length(pull(prep_df, month))`.
+
+*Key variables are `weight tons`, `total precipitation`, `dumpster`, `month` and `year`.
+
+*Total precipitation in 2018 is `r sum(pull(filter(prep_df, year == 2018), total))` inches. The median number of sports balls in a dumpster in 2017 is `r median(pull(filter(mr_trash_wheel, year == 2017), sports_balls))`.
+
