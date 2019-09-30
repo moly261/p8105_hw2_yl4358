@@ -164,3 +164,13 @@ popular_name_male =
   ) %>% 
   select(-gender)
 ```
+
+## produce a scatter plot
+
+```{r}
+spec_group = 
+  filter(popular_baby_names, gender == "male" & ethnicity == "white non hispanic" & year_of_birth == 2016)
+
+ggplot(spec_group, aes(x = rank, y = count)) +
+  geom_point(aes(color = count)) + ggtitle("Scatterplot") 
+```
