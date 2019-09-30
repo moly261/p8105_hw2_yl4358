@@ -120,3 +120,20 @@ final_dataset = left_join(join_dataset, unemployment_df, by = c("year", "month")
 * The `pols_month` dataset has `r nrow(pols_month)` rows and `r ncol(pols_month)` columns; The `snp_df` dataset has `r nrow(snp_df)` rows and `r ncol(snp_df)` columns; The `unemployment_df` dataset has `r nrow(unemployment_df)` rows and `r ncol(unemployment_df)` columns;
 
 * The `final_dataset` has `r nrow(final_dataset)` rows and `r ncol(final_dataset)` columns. The range of years is `r min(pull(final_dataset, year))` to `r max(pull(final_dataset, year))`. Key variables are `year` and `month`.
+
+# Problem 3
+
+## Load and tidy the data
+
+```{r}
+popular_baby_names = 
+  read_csv("./data/Popular_Baby_Names.csv", col_types = "icccii") %>% 
+  janitor::clean_names() %>% 
+  mutate(
+    gender = str_to_lower(gender),
+    ethnicity = str_to_lower(ethnicity),
+    childs_first_name = str_to_lower(childs_first_name),
+    ethnicity = recode(ethnicity,"asian and paci" = "asian and pacific islander", "black non hisp" = "black non hispanic", "white non hisp" = "white non hispanic", "hisp" = "hispanic" )
+  ) %>% 
+  distinct()
+```
