@@ -51,7 +51,7 @@ prep_df =
 
 * the number of observations in `mr_trash_wheel` dataset is `r length(pull(mr_trash_wheel, dumpster))`, and the the number of observations in `prep_df` dataset is `r length(pull(prep_df, month))`.
 
-*Key variables are `dumpster`, `month` and `year`.
+*Key variables are `total p_recipitation` and `month` in `prep_df` dataset and `date`, `month`, `year`, `weight`, `volume` and `sports_balls` in `mr_trash_wheel` dataset.
 
 *Total precipitation in 2018 is `r sum(pull(filter(prep_df, year == 2018), total))` inches. The median number of sports balls in a dumpster in 2017 is `r median(pull(filter(mr_trash_wheel, year == 2017), sports_balls))`.
 
@@ -119,7 +119,7 @@ final_dataset = left_join(join_dataset, unemployment_df, by = c("year", "month")
 
 * The `pols_month` dataset has `r nrow(pols_month)` rows and `r ncol(pols_month)` columns; The `snp_df` dataset has `r nrow(snp_df)` rows and `r ncol(snp_df)` columns; The `unemployment_df` dataset has `r nrow(unemployment_df)` rows and `r ncol(unemployment_df)` columns;
 
-* The `final_dataset` has `r nrow(final_dataset)` rows and `r ncol(final_dataset)` columns. The range of years is `r min(pull(final_dataset, year))` to `r max(pull(final_dataset, year))`. Key variables are `year` and `month`.
+* The `final_dataset` has `r nrow(final_dataset)` rows and `r ncol(final_dataset)` columns. The range of years is `r min(pull(final_dataset, year))` to `r max(pull(final_dataset, year))`. Key variables are `president`, `close`, `unemployment`, `year` and `month`.
 
 # Problem 3
 
