@@ -149,6 +149,7 @@ rank_oliva_female =
     values_from = "rank"
 ) %>% 
   select(-gender, -childs_first_name)
+rank_oliva_female
 ```
 
 ## Produce a similar table showing the most popular name among male children over time.
@@ -163,6 +164,8 @@ popular_name_male =
     values_from = "childs_first_name"
   ) %>% 
   select(-gender)
+popular_name_male
+
 ```
 
 ## produce a scatter plot
